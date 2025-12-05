@@ -302,3 +302,44 @@ img {
     margin-inline: -1px;
   }
 }
+/* Apply this fix for screens up to 767px wide (standard mobile breakpoint) */
+@media screen and (max-width: 767px) {
+
+    /*
+     * 1. HIDE THE OVERFLOW
+     * Target the main wrapper of your carousel (the element that directly contains all the slides).
+     * This ensures the sides of adjacent items are clipped.
+     */
+    .your-carousel-container {
+        overflow: hidden !important;
+        /* You may also need to remove any horizontal padding on the container */
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    /*
+     * 2. SET SLIDES TO FULL WIDTH
+     * Target the individual slides within the carousel and force them to 100% width.
+     * The !important flag helps ensure it overrides any library-specific styles.
+     */
+    .your-carousel-container .your-slide-item {
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        /* This is also a common fix for some libraries */
+        scroll-padding-left: 0 !important;
+    }
+
+    /* Optional: If your items are product images or media, this snippet is often helpful */
+    /* For example, a similar fix was used on a product media wrapper */
+    .product__media-wrapper {
+        overflow: hidden !important;
+    }
+
+    /* If your carousel is a list (<ul>) of items (<li>)
+     * You might need to target the list container to remove any scroll-padding
+     */
+    .your-carousel-container-ul {
+        scroll-padding-left: 0;
+    }
+}
